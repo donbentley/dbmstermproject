@@ -55,3 +55,11 @@ function displayResults(results) {
 		resultsDiv.textContent = "No results found.";
 	}
 }
+// script.js
+document.addEventListener("DOMContentLoaded", function () {
+	fetch("navbar.html")
+		.then((response) => response.text())
+		.then((navbarHtml) => {
+			document.getElementById("navbar-container").innerHTML = navbarHtml;
+		});
+});

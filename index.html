@@ -1,30 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SQLite Query App</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet">
-  <script src="libs/sql-wasm.js"></script>
-</head>
-<body class="bg-gray-100 text-gray-900 font-sans">
-  <div class="container mx-auto p-6">
-    <h1 class="text-3xl font-bold mb-6">SQLite Query App</h1>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Certified Slugger - Baseball Stats App</title>
+		<link
+			href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css"
+			rel="stylesheet"
+		/>
+		<script src="libs/sql-wasm.js"></script>
+		<script src="https://cdn.tailwindcss.com"></script>
+	</head>
+	<body class="bg-gray-100 text-gray-800">
+		<!-- Navbar -->
+		<div id="navbar-container"></div>
 
-    <!-- Buttons for Queries -->
-    <div class="space-x-4">
-      <button onclick="runQuery('SELECT * FROM products LIMIT 10;')" class="px-4 py-2 bg-blue-500 text-white rounded">
-        Show Top Products
-      </button>
-      <button onclick="runQuery('SELECT * FROM users;')" class="px-4 py-2 bg-green-500 text-white rounded">
-        Show Users
-      </button>
-    </div>
+		<!-- Hero Section -->
+		<header
+			class="bg-gradient-to-r from-slate-300 to-slate-500 text-white py-24 transition-all duration-500"
+		>
+			<div class="container mx-auto text-center">
+				<h1 class="text-5xl font-bold mb-4">Certified Slugger</h1>
+				<p class="text-xl mb-8">
+					Unlock the power of baseball statistics with easy-to-use querying
+					tools. Explore player performance, team metrics, and historical
+					data—all at your fingertips.
+				</p>
+				<a
+					href="query1.html"
+					class="bg-slate-500 text-white px-6 py-3 text-lg font-semibold rounded-full hover:bg-slate-400 hover:scale-105 hover:opacity-90 transition-all duration-300 ease-in-out hover:bg-gradient-to-r hover:from-yellow-400 hover:to-yellow-600"
+				>
+					Get Started with Queries
+				</a>
+			</div>
+		</header>
 
-    <!-- Results Table -->
-    <div id="results" class="mt-6"></div>
-  </div>
+		<!-- Buttons for Queries -->
+		<main class="container mx-auto p-6">
+			<h1 class="text-4xl font-bold text-center my-8">
+				Welcome to Certified Slugger
+			</h1>
+			<p class="text-xl text-center mb-4">
+				This app allows you to run various baseball statistics queries on an
+				SQLite database.
+			</p>
+			<div class="text-center mt-8">
+				<p class="text-lg">
+					Choose a query from the navbar above to get started!
+				</p>
+			</div>
+		</main>
 
-  <script src="script.js"></script>
-</body>
+		<script src="script.js"></script>
+	</body>
 </html>
