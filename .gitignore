@@ -1,1 +1,16 @@
 node_modules/
+# Python bytecode files
+*.pyc
+*.pyo
+
+# Virtual environment
+venv/
+
+# IDE settings (e.g., for VSCode)
+.vscode/
+
+# System files
+.DS_Store
+
+# Other files you want to ignore
+*.log

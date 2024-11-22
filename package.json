@@ -1,7 +1,16 @@
 {
-  "devDependencies": {
-    "autoprefixer": "^10.4.20",
-    "postcss": "^8.4.49",
-    "tailwindcss": "^3.4.15"
-  }
+	"devDependencies": {
+		"autoprefixer": "^10.4.20",
+		"concurrently": "^9.1.0",
+		"postcss": "^8.4.49",
+		"tailwindcss": "^3.4.15"
+	},
+	"dependencies": {
+		"sql.js": "^1.12.0"
+	},
+	"scripts": {
+		"start": "concurrently \"python app.py\" \"npm run watch:tailwind\"",
+		"build:tailwind": "npx tailwindcss -i ./static/css/styles.css -o ./static/css/tailwind.css --minify",
+		"watch:tailwind": "npx tailwindcss -i ./static/css/styles.css -o ./static/css/tailwind.css --watch"
+	}
 }
