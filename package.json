@@ -9,7 +9,7 @@
 		"sql.js": "^1.12.0"
 	},
 	"scripts": {
-		"start": "concurrently \"python app.py\" \"npm run watch:tailwind\"",
+		"start": "concurrently \"python3 app.py\" \"npm run watch:tailwind\"",
 		"build:tailwind": "npx tailwindcss -i ./static/css/styles.css -o ./static/css/tailwind.css --minify",
 		"watch:tailwind": "npx tailwindcss -i ./static/css/styles.css -o ./static/css/tailwind.css --watch"
 	}
