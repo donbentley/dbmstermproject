@@ -1,35 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Baseball Stats - Query 3</title>
-		<script src="https://cdn.tailwindcss.com"></script>
-		<script src="../static/libs/sql-wasm.js"></script>
-	</head>
-	<body class="bg-gray-100 text-gray-800">
-		<!-- Navbar -->
-		<div id="navbar-container"></div>
-		<!-- Main Content -->
-		<main class="container mx-auto p-6">
-			<h1 class="text-4xl font-bold text-center my-8">
-				Query 3: Team Performance Stats
-			</h1>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Baseball Stats - Query 3</title>
+    <link href="/static/css/tailwind.css" rel="stylesheet" />
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <!-- Navbar -->
+    <div id="navbar-container"></div>
 
-			<!-- Query result table -->
-			<table class="min-w-full bg-white border border-gray-300">
-				<thead>
-					<tr>
-						<th class="px-6 py-3 text-left">Team</th>
-						<th class="px-6 py-3 text-left">Wins</th>
-						<th class="px-6 py-3 text-left">Losses</th>
-					</tr>
-				</thead>
-				<tbody id="query3-results">
-					<!-- Dynamic results will be inserted here -->
-				</tbody>
-			</table>
-		</main>
-		<script src="../static/script.js"></script>
-	</body>
+    <!-- Main Content -->
+    <main class="container mx-auto p-6">
+        <h1 class="text-4xl font-bold text-center my-8">Query 3: Player Pitching Stats</h1>
+
+        <!-- Tables for different year ranges -->
+        <div id="tables-container" class="space-y-6">
+            <div>
+                <h2 class="text-2xl font-semibold">1990 - 2000</h2>
+                <table class="min-w-full bg-white border border-gray-300">
+                    <thead>
+                        <tr id="table-header-2000-2001"></tr>
+                    </thead>
+                    <tbody id="table-body-2000-2001"></tbody>
+                </table>
+            </div>
+            <div>
+                <h2 class="text-2xl font-semibold">2000 - 2010</h2>
+                <table class="min-w-full bg-white border border-gray-300">
+                    <thead>
+                        <tr id="table-header-2001-2002"></tr>
+                    </thead>
+                    <tbody id="table-body-2001-2002"></tbody>
+                </table>
+            </div>
+            <div>
+                <h2 class="text-2xl font-semibold">2010 - 2015</h2>
+                <table class="min-w-full bg-white border border-gray-300">
+                    <thead>
+                        <tr id="table-header-2002-2003"></tr>
+                    </thead>
+                    <tbody id="table-body-2002-2003"></tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <script src="../static/script.js"></script>
+    <script>
+        // Initialize data fetch for pitching stats
+        document.addEventListener('DOMContentLoaded', () => fetchData('query3'));
+    </script>
+</body>
 </html>
