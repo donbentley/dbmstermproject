@@ -32,18 +32,24 @@ def query3():
 @app.route('/api/query1')
 def get_batting_data():
     queries = {
-        '2000-2001': '''SELECT DISTINCT m.playerID, m.nameFirst, m.nameLast, b.AB, b.H, b.HR, b.RBI, b.yearID, b.teamID
+        '2000-2001': '''SELECT DISTINCT m.nameFirst, m.nameLast, b.AB, b.H, b.HR, b.RBI, b.yearID, b.teamID
                         FROM Batting b
                         INNER JOIN Master m ON b.playerID = m.playerID
-                        WHERE b.yearID BETWEEN 2000 AND 2001 AND b.teamID = "ATL" ''',
-        '2001-2002': '''SELECT DISTINCT m.playerID, m.nameFirst, m.nameLast, b.AB, b.H, b.HR, b.RBI, b.yearID, b.teamID
+                        WHERE b.yearID BETWEEN 1990 AND 2000 
+                        ORDER BY b.H DESC
+                        LIMIT 25''',
+        '2001-2002': '''SELECT DISTINCT m.nameFirst, m.nameLast, b.AB, b.H, b.HR, b.RBI, b.yearID, b.teamID
                         FROM Batting b
                         INNER JOIN Master m ON b.playerID = m.playerID
-                        WHERE b.yearID BETWEEN 2001 AND 2002 AND b.teamID = "ATL" ''',
-        '2002-2003': '''SELECT DISTINCT m.playerID, m.nameFirst, m.nameLast, b.AB, b.H, b.HR, b.RBI, b.yearID, b.teamID
+                        WHERE b.yearID BETWEEN 2000 AND 2010 
+                        ORDER BY b.H DESC
+                        LIMIT 25''',
+        '2002-2003': '''SELECT DISTINCT m.nameFirst, m.nameLast, b.AB, b.H, b.HR, b.RBI, b.yearID, b.teamID
                         FROM Batting b
                         INNER JOIN Master m ON b.playerID = m.playerID
-                        WHERE b.yearID BETWEEN 2002 AND 2003 AND b.teamID = "ATL" ''',
+                        WHERE b.yearID BETWEEN 2010 AND 2015
+                        ORDER BY b.H DESC
+                        LIMIT 25''',
     }
     data = {key: query_database(query) for key, query in queries.items()}
     return jsonify(data)
@@ -52,18 +58,24 @@ def get_batting_data():
 @app.route('/api/query2')
 def get_fielding_data():
     queries = {
-        '2000-2001': '''SELECT DISTINCT m.playerID, m.nameFirst, m.nameLast, f.POS, f.G, f.InnOuts, f.yearID, f.teamID
+        '2000-2001': '''SELECT DISTINCT m.nameFirst, m.nameLast, f.POS, f.G, f.InnOuts, f.yearID, f.teamID
                         FROM Fielding f
                         INNER JOIN Master m ON f.playerID = m.playerID
-                        WHERE f.yearID BETWEEN 2000 AND 2001 AND f.teamID = "ATL" ''',
-        '2001-2002': '''SELECT DISTINCT m.playerID, m.nameFirst, m.nameLast, f.POS, f.G, f.InnOuts, f.yearID, f.teamID
+                        WHERE f.yearID BETWEEN 1990 AND 2000  
+                        ORDER BY f.InnOuts DESC
+                        LIMIT 25''',
+        '2001-2002': '''SELECT DISTINCT m.nameFirst, m.nameLast, f.POS, f.G, f.InnOuts, f.yearID, f.teamID
                         FROM Fielding f
                         INNER JOIN Master m ON f.playerID = m.playerID
-                        WHERE f.yearID BETWEEN 2001 AND 2002 AND f.teamID = "ATL" ''',
-        '2002-2003': '''SELECT DISTINCT m.playerID, m.nameFirst, m.nameLast, f.POS, f.G, f.InnOuts, f.yearID, f.teamID
+                        WHERE f.yearID BETWEEN 2000 AND 2010
+                        ORDER BY f.InnOuts DESC
+                        LIMIT 25''',
+        '2002-2003': '''SELECT DISTINCT m.nameFirst, m.nameLast, f.POS, f.G, f.InnOuts, f.yearID, f.teamID
                         FROM Fielding f
                         INNER JOIN Master m ON f.playerID = m.playerID
-                        WHERE f.yearID BETWEEN 2002 AND 2003 AND f.teamID = "ATL" ''',
+                        WHERE f.yearID BETWEEN 2010 AND 2015
+                        ORDER BY f.InnOuts DESC
+                        LIMIT 25''',
     }
     data = {key: query_database(query) for key, query in queries.items()}
     return jsonify(data)
@@ -72,18 +84,24 @@ def get_fielding_data():
 @app.route('/api/query3')
 def get_pitching_data():
     queries = {
-        '2000-2001': '''SELECT DISTINCT m.playerID, m.nameFirst, m.nameLast, p.L, p.W, p.ER, p.ERA, p.yearID, p.teamID
+        '2000-2001': '''SELECT DISTINCT m.nameFirst, m.nameLast, p.L, p.W, p.ER, p.ERA, p.yearID, p.teamID
                         FROM Pitching p
                         INNER JOIN Master m ON p.playerID = m.playerID
-                        WHERE p.yearID BETWEEN 2000 AND 2001 AND p.teamID = "ATL" ''',
-        '2001-2002': '''SELECT DISTINCT m.playerID, m.nameFirst, m.nameLast, p.L, p.W, p.ER, p.ERA, p.yearID, p.teamID
+                        WHERE p.yearID BETWEEN 1990 AND 2000 
+                        ORDER BY p.W DESC
+                        LIMIT 25 ''',
+        '2001-2002': '''SELECT DISTINCT m.nameFirst, m.nameLast, p.L, p.W, p.ER, p.ERA, p.yearID, p.teamID
                         FROM Pitching p
                         INNER JOIN Master m ON p.playerID = m.playerID
-                        WHERE p.yearID BETWEEN 2001 AND 2002 AND p.teamID = "ATL" ''',
-        '2002-2003': '''SELECT DISTINCT m.playerID, m.nameFirst, m.nameLast, p.L, p.W, p.ER, p.ERA, p.yearID, p.teamID
+                        WHERE p.yearID BETWEEN 2000 AND 2010 
+                        ORDER BY p.W DESC
+                        LIMIT 25''',
+        '2002-2003': '''SELECT DISTINCT m.nameFirst, m.nameLast, p.L, p.W, p.ER, p.ERA, p.yearID, p.teamID
                         FROM Pitching p
                         INNER JOIN Master m ON p.playerID = m.playerID
-                        WHERE p.yearID BETWEEN 2002 AND 2003 AND p.teamID = "ATL" ''',
+                        WHERE p.yearID BETWEEN 2010 AND 2015 
+                        ORDER BY p.W DESC
+                        LIMIT 25 ''',
     }
     data = {key: query_database(query) for key, query in queries.items()}
     return jsonify(data)
