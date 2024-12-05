@@ -871,10 +871,6 @@ video {
   background-position: center;
 }
 
-.bg-no-repeat {
-  background-repeat: no-repeat;
-}
-
 .fill-white {
   fill: #fff;
 }
