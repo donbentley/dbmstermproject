@@ -12,53 +12,84 @@
 
 		<!-- Hero Section -->
 		<header
-			class="bg-gradient-to-r from-slate-300 to-slate-500 text-white py-24 transition-all duration-500"
+			class="bg-cover bg-center py-24 transition-all duration-500"
+			style="
+				background-image: url('https://plus.unsplash.com/premium_vector-1729694072694-1ebd863a40ea?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+			"
 		>
-			<div class="container mx-auto text-center">
-				<h1 class="text-5xl font-bold mb-4">Certified Slugger</h1>
-				<p class="text-xl mb-8">
+			<div class="container mx-auto bg-black/15 drop-shadow-md p-6 rounded-md">
+				<h1 class="text-white text-5xl font-extrabold  mb-4">
+					certified slugger &#8482;
+				</h1>
+				<p class="text-xl text-gray-100 drop-shadow-md mb-3">
 					Unlock the power of baseball statistics with easy-to-use querying
 					tools. Explore player performance, team metrics, and historical
 					data—all at your fingertips.
 				</p>
+				<p class="text-lg text-white drop-shadow-md font-light">
+					This app allows you to run various baseball statistics queries on an
+					SQLite database.
+				</p>
 			</div>
-		</header>
 
-		<!-- Buttons for Queries -->
-		<main class="container mx-auto p-6 text-center">
-			<h1 class="text-4xl font-bold my-8">Welcome to Certified Slugger</h1>
-			<p class="text-xl mb-4">
-				This app allows you to run various baseball statistics queries on an
-				SQLite database.
-			</p>
-
-			<div class="space-y-4">
+			<!-- Buttons for Queries -->
+			<div class="flex justify-center gap-4 p-4 mt-6">
 				<a
 					href="/query1"
-					class="bg-blue-500 text-white px-6 py-3 text-lg font-semibold rounded-full hover:bg-blue-400 transition-all duration-300"
+					class="block h-[3em] w-[15em] bg-white rounded-md ring-2 ring-black overflow-hidden relative group p-2 z-0 flex items-center justify-center"
 				>
-					Query 1 - Batting Stats
+					<div
+						class="circle absolute h-[5em] w-[5em] -top-[2.5em] -right-[2.5em] rounded-full bg-red-600 group-hover:scale-[800%] duration-500 z-[-1]"
+					></div>
+					<h1
+						class="z-20 font-extrabold font-Poppin group-hover:text-white duration-500 text-[1.4em]"
+					>
+						batting stats
+					</h1>
 				</a>
+
 				<a
-					href="/query2"
-					class="bg-green-500 text-white px-6 py-3 text-lg font-semibold rounded-full hover:bg-green-400 transition-all duration-300"
+				href="/query2"
+				class="block h-[3em] w-[15em] bg-white rounded-md ring-2 ring-black overflow-hidden relative group p-2 z-0 flex items-center justify-center"
+			>
+				<div
+					class="circle absolute h-[5em] w-[5em] -top-[2.5em] -right-[2.5em] rounded-full bg-cyan-700 group-hover:scale-[800%] duration-500 z-[-1]"
+				></div>
+				<h1
+					class="z-20 font-extrabold font-Poppin group-hover:text-white duration-500 text-[1.4em]"
 				>
-					Query 2 - Fielding Stats
-				</a>
-				<a
-					href="/query3"
-					class="bg-red-500 text-white px-6 py-3 text-lg font-semibold rounded-full hover:bg-red-400 transition-all duration-300"
+					fielding stats
+				</h1>
+			</a>
+			
+			<a
+				href="/query3"
+				class="block h-[3em] w-[15em] bg-white rounded-md ring-2 ring-black  overflow-hidden relative group p-2 z-0 flex items-center justify-center"
+			>
+				<div
+					class="circle absolute h-[5em] w-[5em] -top-[2.5em] -right-[2.5em] rounded-full bg-orange-400 group-hover:scale-[800%] duration-500 z-[-1]"
+				></div>
+				<h1
+					class="z-20 font-extrabold font-Poppin group-hover:text-white duration-500 text-[1.4em]"
 				>
-					Query 3 - Pitching Stats
-				</a>
-				<a
-					href="query4"
-					class="bg-orange-500 text-white px-6 py-3 text-lg font-semibold rounded-full hover:bg-red-400 transition-all duration-300"
+					pitching stats
+				</h1>
+			</a>
+			
+			<a
+				href="/query4"
+				class="block h-[3em] w-[15em] bg-white rounded-md ring-2 ring-black  overflow-hidden relative group p-2 z-0 flex items-center justify-center"
+			>
+				<div
+					class="circle absolute h-[5em] w-[5em] -top-[2.5em] -right-[2.5em] rounded-full bg-emerald-500 group-hover:scale-[800%] duration-500 z-[-1]"
+				></div>
+				<h1
+					class="z-20 font-extrabold font-Poppin group-hover:text-white duration-500 text-[1.4em]"
 				>
-					Query 4 - Salaries</a
-				>
-			</div>
-		</main>
+					salary stats
+				</h1>
+			</a>
+		</header>
 
 		<script src="../static/script.js"></script>
 	</body>
