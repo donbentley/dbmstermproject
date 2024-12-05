@@ -3,34 +3,200 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Baseball Stats - Query 4</title>
+		<title>Query 4 - Salaries Data</title>
 		<script src="https://cdn.tailwindcss.com"></script>
-		<script src="../static/libs/sql-wasm.js"></script>
+		<script src="../static/script.js"></script>
+
+		<style>
+			/* Custom carousel container styles, if needed */
+			.carousel-container {
+				position: relative;
+				width: 100%;
+				overflow: hidden;
+			}
+
+			.carousel {
+				display: flex;
+				transition: transform 0.3s ease-in-out;
+			}
+
+			.table-container {
+				min-width: 100%;
+				display: flex;
+				flex-direction: column; /* Stack title and table vertically */
+				justify-content: center;
+				align-items: center;
+				padding: 10px;
+			}
+
+			/* Optional: Add responsiveness for smaller screens */
+			@media (max-width: 768px) {
+				.table-container {
+					min-width: 100%; /* Full width for mobile */
+				}
+			}
+
+			/* Buttons to navigate */
+			.carousel-btn {
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+				background-color: rgba(0, 0, 0, 0.5);
+				color: white;
+				padding: 10px;
+				font-size: 20px;
+				cursor: pointer;
+			}
+
+			.prev-btn {
+				left: 0;
+			}
+
+			.next-btn {
+				right: 0;
+			}
+		</style>
 	</head>
 	<body class="bg-gray-100 text-gray-800">
 		<!-- Navbar -->
 		<div id="navbar-container"></div>
 
 		<!-- Main Content -->
-		<main class="container mx-auto p-6">
-			<h1 class="text-4xl font-bold text-center my-8">
-				Query 4: Player Awards
-			</h1>
+		<section
+			class="bg-gradient-to-r from-emerald-500 to-emerald-900 relative bg-cover bg-center overflow-hidden"
+		>
+			<!-- Overlay -->
+			<div class="absolute inset-0 bg-black opacity-50"></div>
 
-			<!-- Query result table -->
-			<table class="min-w-full bg-white border border-gray-300">
-				<thead>
-					<tr>
-						<th class="px-6 py-3 text-left">Player</th>
-						<th class="px-6 py-3 text-left">Award</th>
-						<th class="px-6 py-3 text-left">Year</th>
-					</tr>
-				</thead>
-				<tbody id="query4-results">
-					<!-- Dynamic results will be inserted here -->
-				</tbody>
-			</table>
+			<!-- Hero Content -->
+			<div
+				class="relative container mx-auto px-6 py-24 z-10 text-white flex items-center justify-between"
+			>
+				<!-- Left Section: Title -->
+				<div class="flex-1">
+					<h1 class="text-5xl font-extrabold leading-tight mb-4">
+						Salaries by the Decade
+					</h1>
+				</div>
+
+				<!-- Right Section: Image or Additional Information -->
+				<div class="flex-1 text-right">
+					<p class="text-md font-light">
+						Dive in and explore how baseball salaries have fluctuated throughout
+						the modern era.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<main class="container mx-auto p-6">
+			<!-- Tables for Each Dataset: Wrap in carousel container -->
+			<section class="my-6">
+				<!-- Carousel container -->
+				<div class="carousel-container">
+					<div class="carousel">
+						<!-- Table for 1990s Salaries -->
+						<div class="table-container">
+							<h3 class="text-5xl font-extrabold leading-tight mb-4">
+								Top salaries of the 90's
+							</h3>
+							<table
+								class="min-w-max bg-white border border-gray-300 rounded-lg"
+							>
+								<thead>
+									<tr id="table-header-1990s" class="bg-gray-200"></tr>
+								</thead>
+								<tbody id="table-body-1990s"></tbody>
+							</table>
+						</div>
+
+						<!-- Table for 2000s Salaries -->
+						<div class="table-container">
+							<h3 class="text-5xl font-extrabold leading-tight mb-4">
+								Top salaries of the 00's
+							</h3>
+							<table
+								class="min-w-max bg-white border border-gray-300 rounded-lg"
+							>
+								<thead>
+									<tr id="table-header-2000s" class="bg-gray-200"></tr>
+								</thead>
+								<tbody id="table-body-2000s"></tbody>
+							</table>
+						</div>
+
+						<!-- Table for 2010s Salaries -->
+						<div class="table-container">
+							<h3 class="text-5xl font-extrabold leading-tight mb-4">
+								Top salaries of the 2010's
+							</h3>
+							<table
+								class="min-w-max bg-white border border-gray-300 rounded-lg"
+							>
+								<thead>
+									<tr id="table-header-2010s" class="bg-gray-200"></tr>
+								</thead>
+								<tbody id="table-body-2010s"></tbody>
+							</table>
+						</div>
+
+						<!-- Table for Top Salaries -->
+						<div class="table-container">
+							<h3 class="text-5xl font-extrabold leading-tight mb-4">
+								Top Salaries All Time
+							</h3>
+							<table
+								class="min-w-max bg-white border border-gray-300 rounded-lg"
+							>
+								<thead>
+									<tr id="table-header-top-salaries"></tr>
+								</thead>
+								<tbody id="table-body-top-salaries"></tbody>
+							</table>
+						</div>
+					</div>
+
+					<!-- Previous and Next buttons -->
+					<div
+						class="carousel-btn prev-btn absolute top-1/2 transform -translate-y-1/2 text-black text-2xl cursor-pointer bg-transparent border-none left-0"
+						onclick="moveSlide(-1)"
+					>
+						&#10094;
+					</div>
+					<div
+						class="carousel-btn next-btn absolute top-1/2 transform -translate-y-1/2 text-black text-2xl cursor-pointer bg-transparent border-none right-0"
+						onclick="moveSlide(1)"
+					>
+						&#10095;
+					</div>
+				</div>
+			</section>
 		</main>
-		<script src="../static/script.js"></script>
+
+		<script>
+			// Fetch salary data and populate tables
+			fetchData("query4");
+
+			let currentSlide = 0;
+
+			function moveSlide(direction) {
+				const carousel = document.querySelector(".carousel");
+				const totalSlides =
+					document.querySelectorAll(".table-container").length;
+
+				// Update the current slide index
+				currentSlide += direction;
+
+				if (currentSlide < 0) {
+					currentSlide = totalSlides - 1; // Loop to the last slide
+				} else if (currentSlide >= totalSlides) {
+					currentSlide = 0; // Loop to the first slide
+				}
+
+				// Move the carousel
+				const offset = -currentSlide * 100;
+				carousel.style.transform = `translateX(${offset}%)`;
+			}
+		</script>
 	</body>
 </html>

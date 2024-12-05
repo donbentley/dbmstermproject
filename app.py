@@ -27,7 +27,10 @@ def query2():
 @app.route('/query3')
 def query3():
     return render_template('query3.html')
-    
+@app.route('/query4')
+def query4():
+    return render_template('query4.html')
+
 # API route to get unique batting data for specific years and team, including player names
 @app.route('/api/query1')
 def get_batting_data():
@@ -105,6 +108,19 @@ def get_pitching_data():
     }
     data = {key: query_database(query) for key, query in queries.items()}
     return jsonify(data)
+
+@app.route('/api/query4')
+def get_salary_data():
+    queries = {
+        '1990s': 'SELECT * FROM Salaries_1990s',
+        '2000s': 'SELECT * FROM Salaries_2000s',
+        '2010s': 'SELECT * FROM Salaries_2010s',
+        'top_salaries': 'SELECT * FROM Top_Salaries '
+    }
+    data = {key: query_database(query) for key, query in queries.items()}
+    return jsonify(data)
+
+
 
 
 if __name__ == '__main__':

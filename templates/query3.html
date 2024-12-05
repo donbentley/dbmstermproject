@@ -1,55 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Baseball Stats - Query 3</title>
-    <link href="/static/css/tailwind.css" rel="stylesheet" />
-</head>
-<body class="bg-gray-100 text-gray-800">
-    <!-- Navbar -->
-    <div id="navbar-container"></div>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Baseball Stats - Query 3</title>
+		<link href="/static/css/tailwind.css" rel="stylesheet" />
+	</head>
+	<body class="bg-gray-100 text-gray-800">
+		<!-- Navbar -->
+		<div id="navbar-container"></div>
 
-    <!-- Main Content -->
-    <main class="container mx-auto p-6">
-        <h1 class="text-4xl font-bold text-center my-8">Query 3: Player Pitching Stats</h1>
+		<!-- Hero Section -->
+		<section
+			class="bg-gradient-to-r from-purple-500 to-purple-900 relative bg-cover bg-center overflow-hidden"
+		>
+			<!-- Overlay -->
+			<div class="absolute inset-0 bg-black opacity-50"></div>
 
-        <!-- Tables for different year ranges -->
-        <div id="tables-container" class="space-y-6">
-            <div>
-                <h2 class="text-2xl font-semibold">1990 - 2000</h2>
-                <table class="min-w-full bg-white border border-gray-300">
-                    <thead>
-                        <tr id="table-header-2000-2001"></tr>
-                    </thead>
-                    <tbody id="table-body-2000-2001"></tbody>
-                </table>
-            </div>
-            <div>
-                <h2 class="text-2xl font-semibold">2000 - 2010</h2>
-                <table class="min-w-full bg-white border border-gray-300">
-                    <thead>
-                        <tr id="table-header-2001-2002"></tr>
-                    </thead>
-                    <tbody id="table-body-2001-2002"></tbody>
-                </table>
-            </div>
-            <div>
-                <h2 class="text-2xl font-semibold">2010 - 2015</h2>
-                <table class="min-w-full bg-white border border-gray-300">
-                    <thead>
-                        <tr id="table-header-2002-2003"></tr>
-                    </thead>
-                    <tbody id="table-body-2002-2003"></tbody>
-                </table>
-            </div>
-        </div>
-    </main>
+			<!-- Hero Content -->
+			<div
+				class="relative container mx-auto px-6 py-24 z-10 text-white flex items-center justify-between"
+			>
+				<!-- Left Section: Title -->
+				<div class="flex-1">
+					<h1 class="text-5xl font-extrabold leading-tight mb-4">
+						Player Pitching Stats
+					</h1>
+				</div>
 
-    <script src="../static/script.js"></script>
-    <script>
-        // Initialize data fetch for pitching stats
-        document.addEventListener('DOMContentLoaded', () => fetchData('query3'));
-    </script>
-</body>
+				<!-- Right Section: Image or Additional Information -->
+				<div class="flex-1 text-right">
+					<p class="text-md font-light">
+						Discover the pitching prowess of baseball players from 1990 to 2015.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Main Content -->
+		<main class="container mx-auto p-6">
+			<!-- Carousel Container -->
+			<div class="carousel-container relative overflow-hidden">
+				<div
+					class="carousel flex transition-transform duration-300 ease-in-out"
+					style="width: 300%"
+				>
+					<!-- Table for 1990 - 2000 -->
+					<div class="table-container w-full flex-shrink-0">
+						<h2 class="text-5xl font-extrabold leading-tight mb-4">
+							Pitching Stats: 1990 - 2000
+						</h2>
+						<table
+							class="min-w-fit bg-white border border-gray-300 table-fixed"
+						>
+							<thead class="w-1/6">
+								<tr id="table-header-2000-2001"></tr>
+							</thead>
+							<tbody id="table-body-2000-2001"></tbody>
+						</table>
+					</div>
+
+					<!-- Table for 2000 - 2010 -->
+					<div class="table-container w-full flex-shrink-0">
+						<h2 class="text-5xl font-extrabold leading-tight mb-4">
+							Pitching Stats: 2000 - 2010
+						</h2>
+						<table
+							class="min-w-fit bg-white border border-gray-300 table-fixed"
+						>
+							<thead>
+								<tr id="table-header-2001-2002"></tr>
+							</thead>
+							<tbody id="table-body-2001-2002"></tbody>
+						</table>
+					</div>
+
+					<!-- Table for 2010 - 2015 -->
+					<div class="table-container w-full flex-shrink-0">
+						<h2 class="text-5xl font-extrabold leading-tight mb-4">
+							Pitching Stats: 2010 - 2015
+						</h2>
+						<table
+							class="min-w-fit bg-white border border-gray-300 table-fixed"
+						>
+							<thead>
+								<tr id="table-header-2002-2003"></tr>
+							</thead>
+							<tbody id="table-body-2002-2003"></tbody>
+						</table>
+					</div>
+				</div>
+
+				<!-- Carousel Buttons -->
+				<div
+					class="carousel-btn prev-btn absolute top-1/2 transform -translate-y-1/2 text-black text-2xl cursor-pointer bg-transparent border-none left-0"
+					onclick="moveSlide(-1)"
+				>
+					&#10094;
+				</div>
+				<div
+					class="carousel-btn next-btn absolute top-1/2 transform -translate-y-1/2 text-black text-2xl cursor-pointer bg-transparent border-none right-0"
+					onclick="moveSlide(1)"
+				>
+					&#10095;
+				</div>
+			</div>
+		</main>
+
+		<script src="../static/script.js"></script>
+		<script>
+			// Initialize data fetch for pitching stats
+			document.addEventListener("DOMContentLoaded", () => fetchData("query3"));
+
+			// Carousel functionality
+			let currentSlide = 0;
+
+			function moveSlide(direction) {
+				const carousel = document.querySelector(".carousel");
+				const totalSlides =
+					document.querySelectorAll(".table-container").length;
+
+				// Update the current slide index
+				currentSlide += direction;
+
+				if (currentSlide < 0) {
+					currentSlide = totalSlides - 1; // Loop to the last slide
+				} else if (currentSlide >= totalSlides) {
+					currentSlide = 0; // Loop to the first slide
+				}
+
+				// Move the carousel
+				const offset = -currentSlide * 100; // Shift by the width of one slide
+				carousel.style.transform = `translateX(${offset}%)`;
+				carousel.style.transition = "transform 0.3s ease-in-out"; // Smooth animation
+			}
+		</script>
+	</body>
 </html>

@@ -1,0 +1,124 @@
+-- Drop and recreate Salaries_1990s with proper schema
+DROP TABLE IF EXISTS Salaries_1990s;
+
+CREATE TABLE Salaries_1990s (
+    Rank INTEGER,
+    Name TEXT,
+    Salary INTEGER,
+    Team TEXT
+);
+
+INSERT INTO Salaries_1990s (Rank, Name, Salary, Team)
+SELECT
+    ROW_NUMBER() OVER (ORDER BY MAX(Salaries.salary) DESC) AS Rank,
+    Master.nameGiven AS Name,
+    MAX(Salaries.salary) AS Salary,
+    Teams.name AS Team
+FROM
+    Master
+INNER JOIN
+    Salaries ON Master.playerID = Salaries.playerID
+INNER JOIN
+    Teams ON Salaries.teamID = Teams.teamID
+WHERE
+    Salaries.yearID BETWEEN 1990 AND 1999
+GROUP BY
+    Master.playerID
+ORDER BY
+    Rank
+LIMIT 25;
+
+-- Drop and recreate Salaries_2000s with proper schema
+DROP TABLE IF EXISTS Salaries_2000s;
+
+CREATE TABLE Salaries_2000s (
+    Rank INTEGER,
+    Name TEXT,
+    Salary INTEGER,
+    Team TEXT
+);
+
+INSERT INTO Salaries_2000s (Rank, Name, Salary, Team)
+SELECT
+    ROW_NUMBER() OVER (ORDER BY MAX(Salaries.salary) DESC) AS Rank,
+    Master.nameGiven AS Name,
+    MAX(Salaries.salary) AS Salary,
+    Teams.name AS Team
+FROM
+    Master
+INNER JOIN
+    Salaries ON Master.playerID = Salaries.playerID
+INNER JOIN
+    Teams ON Salaries.teamID = Teams.teamID
+WHERE
+    Salaries.yearID BETWEEN 2000 AND 2009
+GROUP BY
+    Master.playerID
+ORDER BY
+    Rank
+LIMIT 25;
+
+-- Drop and recreate Salaries_2010s with proper schema
+DROP TABLE IF EXISTS Salaries_2010s;
+
+CREATE TABLE Salaries_2010s (
+    Rank INTEGER,
+    Name TEXT,
+    Salary INTEGER,
+    Team TEXT
+);
+
+INSERT INTO Salaries_2010s (Rank, Name, Salary, Team)
+SELECT
+    ROW_NUMBER() OVER (ORDER BY MAX(Salaries.salary) DESC) AS Rank,
+    Master.nameGiven AS Name,
+    MAX(Salaries.salary) AS Salary,
+    Teams.name AS Team
+FROM
+    Master
+INNER JOIN
+    Salaries ON Master.playerID = Salaries.playerID
+INNER JOIN
+    Teams ON Salaries.teamID = Teams.teamID
+WHERE
+    Salaries.yearID BETWEEN 2010 AND 2020
+GROUP BY
+    Master.playerID
+ORDER BY
+    Rank
+LIMIT 25;
+
+-- Drop and recreate Top_Salaries with proper schema
+DROP TABLE IF EXISTS Top_Salaries;
+
+CREATE TABLE Top_Salaries (
+    Rank INTEGER,
+    Name TEXT,
+    Salary INTEGER,
+    Decade TEXT
+);
+
+-- Insert data into the Top_Salaries table
+INSERT INTO Top_Salaries (Rank, Name, Salary, Decade)
+SELECT
+    ROW_NUMBER() OVER (ORDER BY MAX(Salaries.salary) DESC) AS Rank,
+    Master.nameGiven AS Name,
+    MAX(Salaries.salary) AS Salary,
+    CASE
+        WHEN Salaries.yearID BETWEEN 1990 AND 1999 THEN '1990s'
+        WHEN Salaries.yearID BETWEEN 2000 AND 2009 THEN '2000s'
+        WHEN Salaries.yearID BETWEEN 2010 AND 2020 THEN '2010s'
+    END AS Decade
+FROM
+    Master
+INNER JOIN
+    Salaries ON Master.playerID = Salaries.playerID
+INNER JOIN
+    Teams ON Salaries.teamID = Teams.teamID
+WHERE
+    Salaries.yearID BETWEEN 1990 AND 2020
+GROUP BY
+    Master.playerID, Decade
+ORDER BY
+    Rank
+LIMIT 25;

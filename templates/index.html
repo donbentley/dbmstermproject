@@ -1,41 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Certified Slugger - Baseball Stats App</title>
-    <link href="../static/css/tailwind.css" rel="stylesheet" />
-</head>
-<body class="bg-gray-100 text-gray-800">
-    <!-- Navbar -->
-    <div id="navbar-container"></div>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Certified Slugger - Baseball Stats App</title>
+		<link href="../static/css/tailwind.css" rel="stylesheet" />
+	</head>
+	<body class="bg-gray-100 text-gray-800">
+		<!-- Navbar -->
+		<div id="navbar-container"></div>
 
-    <!-- Hero Section -->
-    <header class="bg-gradient-to-r from-slate-300 to-slate-500 text-white py-24 transition-all duration-500">
-        <div class="container mx-auto text-center">
-            <h1 class="text-5xl font-bold mb-4">Certified Slugger</h1>
-            <p class="text-xl mb-8">Unlock the power of baseball statistics with easy-to-use querying tools. Explore player performance, team metrics, and historical data—all at your fingertips.</p>
-        </div>
-    </header>
+		<!-- Hero Section -->
+		<header
+			class="bg-gradient-to-r from-slate-300 to-slate-500 text-white py-24 transition-all duration-500"
+		>
+			<div class="container mx-auto text-center">
+				<h1 class="text-5xl font-bold mb-4">Certified Slugger</h1>
+				<p class="text-xl mb-8">
+					Unlock the power of baseball statistics with easy-to-use querying
+					tools. Explore player performance, team metrics, and historical
+					data—all at your fingertips.
+				</p>
+			</div>
+		</header>
 
-    <!-- Buttons for Queries -->
-    <main class="container mx-auto p-6 text-center">
-        <h1 class="text-4xl font-bold my-8">Welcome to Certified Slugger</h1>
-        <p class="text-xl mb-4">This app allows you to run various baseball statistics queries on an SQLite database.</p>
-        
-        <div class="space-y-4">
-            <a href="/query1" class="bg-blue-500 text-white px-6 py-3 text-lg font-semibold rounded-full hover:bg-blue-400 transition-all duration-300">
-                Query 1 - Batting Stats
-            </a>
-            <a href="/query2" class="bg-green-500 text-white px-6 py-3 text-lg font-semibold rounded-full hover:bg-green-400 transition-all duration-300">
-                Query 2 - Fielding Stats
-            </a>
-            <a href="/query3" class="bg-red-500 text-white px-6 py-3 text-lg font-semibold rounded-full hover:bg-red-400 transition-all duration-300">
-                Query 3 - Pitching Stats
-            </a>
-        </div>
-    </main>
+		<!-- Buttons for Queries -->
+		<main class="container mx-auto p-6 text-center">
+			<h1 class="text-4xl font-bold my-8">Welcome to Certified Slugger</h1>
+			<p class="text-xl mb-4">
+				This app allows you to run various baseball statistics queries on an
+				SQLite database.
+			</p>
 
-    <script src="../static/script.js"></script>
-</body>
+			<div class="space-y-4">
+				<a
+					href="/query1"
+					class="bg-blue-500 text-white px-6 py-3 text-lg font-semibold rounded-full hover:bg-blue-400 transition-all duration-300"
+				>
+					Query 1 - Batting Stats
+				</a>
+				<a
+					href="/query2"
+					class="bg-green-500 text-white px-6 py-3 text-lg font-semibold rounded-full hover:bg-green-400 transition-all duration-300"
+				>
+					Query 2 - Fielding Stats
+				</a>
+				<a
+					href="/query3"
+					class="bg-red-500 text-white px-6 py-3 text-lg font-semibold rounded-full hover:bg-red-400 transition-all duration-300"
+				>
+					Query 3 - Pitching Stats
+				</a>
+				<a
+					href="query4"
+					class="bg-orange-500 text-white px-6 py-3 text-lg font-semibold rounded-full hover:bg-red-400 transition-all duration-300"
+				>
+					Query 4 - Salaries</a
+				>
+			</div>
+		</main>
+
+		<script src="../static/script.js"></script>
+	</body>
 </html>
